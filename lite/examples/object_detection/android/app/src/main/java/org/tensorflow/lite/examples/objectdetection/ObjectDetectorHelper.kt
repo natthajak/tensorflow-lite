@@ -28,9 +28,9 @@ import org.tensorflow.lite.task.vision.detector.Detection
 import org.tensorflow.lite.task.vision.detector.ObjectDetector
 
 class ObjectDetectorHelper(
-  var threshold: Float = 0.5f,
-  var numThreads: Int = 2,
-  var maxResults: Int = 3,
+  var threshold: Float = 0.1f,
+  var numThreads: Int = 1,
+  var maxResults: Int = 1,
   var currentDelegate: Int = 0,
   var currentModel: Int = 0,
   val context: Context,
@@ -82,14 +82,16 @@ class ObjectDetectorHelper(
 
         optionsBuilder.setBaseOptions(baseOptionsBuilder.build())
 
-        val modelName =
-            when (currentModel) {
-                MODEL_MOBILENETV1 -> "mobilenetv1.tflite"
-                MODEL_EFFICIENTDETV0 -> "efficientdet-lite0.tflite"
-                MODEL_EFFICIENTDETV1 -> "efficientdet-lite1.tflite"
-                MODEL_EFFICIENTDETV2 -> "efficientdet-lite2.tflite"
-                else -> "mobilenetv1.tflite"
-            }
+//        val modelName =
+//            when (currentModel) {
+//                MODEL_MOBILENETV1 -> "efficientdet-lite0.tflite"
+//                MODEL_EFFICIENTDETV0 -> "thyloid.tflite"
+//                MODEL_EFFICIENTDETV1 -> "efficientdet-lite1.tflite"
+//                MODEL_EFFICIENTDETV2 -> "efficientdet-lite2.tflite"
+//                else -> "thyloid.tflite"
+//            }
+
+        val modelName = "thyloid.tflite"
 
         try {
             objectDetector =
@@ -149,5 +151,6 @@ class ObjectDetectorHelper(
         const val MODEL_EFFICIENTDETV0 = 1
         const val MODEL_EFFICIENTDETV1 = 2
         const val MODEL_EFFICIENTDETV2 = 3
+        //const val thyloid = 0
     }
 }
