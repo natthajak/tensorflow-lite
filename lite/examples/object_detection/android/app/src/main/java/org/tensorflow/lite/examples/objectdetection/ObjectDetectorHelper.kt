@@ -30,7 +30,7 @@ import org.tensorflow.lite.task.vision.detector.ObjectDetector
 class ObjectDetectorHelper(
   var threshold: Float = 0.1f,
   var numThreads: Int = 2,
-  var maxResults: Int = 3,
+  var maxResults: Int = 1,
   var currentDelegate: Int = 0,
   val context: Context,
   val objectDetectorListener: DetectorListener?
@@ -93,6 +93,7 @@ class ObjectDetectorHelper(
             )
             Log.e("Test", "TFLite failed to load model with error: " + e.message)
         }
+
     }
 
     fun detect(image: Bitmap, imageRotation: Int) {
