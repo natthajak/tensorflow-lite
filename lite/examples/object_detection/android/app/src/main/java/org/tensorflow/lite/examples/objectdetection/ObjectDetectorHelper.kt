@@ -82,7 +82,7 @@ class ObjectDetectorHelper(
         optionsBuilder.setBaseOptions(baseOptionsBuilder.build())
 
 
-        val modelName = "thyloid.tflite"
+        val modelName = "thyroid_FzBB.tflite"
 
         try {
             objectDetector =
@@ -120,19 +120,20 @@ class ObjectDetectorHelper(
         inferenceTime = SystemClock.uptimeMillis() - inferenceTime
         objectDetectorListener?.onResults(
             results,
-            inferenceTime,
             tensorImage.height,
-            tensorImage.width)
+            tensorImage.width,
+            inferenceTime
+            )
     }
 
     interface DetectorListener {
         fun onError(error: String)
         fun onResults(
           results: MutableList<Detection>?,
-          inferenceTime: Long,
           imageHeight: Int,
-          imageWidth: Int
-        )
+          imageWidth: Int,
+          inferenceTime: Long
+          )
     }
 
     companion object {

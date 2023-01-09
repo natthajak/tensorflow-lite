@@ -39,5 +39,17 @@
             app:navGraph="@navigation/nav_graph"
             tools:context=".MainActivity" />
 
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentTop="true"
+            android:background="@color/toolbar_background">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/rln_logo" />
+        </androidx.appcompat.widget.Toolbar>
+
     </RelativeLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

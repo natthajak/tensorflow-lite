@@ -297,10 +297,10 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     // to scale and place bounding boxes properly through OverlayView
     override fun onResults(
       results: MutableList<Detection>?,
-      inferenceTime: Long,
       imageHeight: Int,
-      imageWidth: Int
-    ) {
+      imageWidth: Int,
+      inferenceTime: Long
+      ) {
         activity?.runOnUiThread {
 //            fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
 //                            String.format("%d ms", inferenceTime)

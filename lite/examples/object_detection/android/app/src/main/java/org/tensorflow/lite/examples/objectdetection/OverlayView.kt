@@ -17,6 +17,7 @@
 package org.tensorflow.lite.examples.objectdetection
 
 import android.content.Context
+import android.util.Log
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -35,6 +36,7 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
     private var boxPaint = Paint()
     private var textBackgroundPaint = Paint()
     private var textPaint = Paint()
+    private var elertPaint = Paint()
 
     private var scaleFactor: Float = 1f
 
@@ -61,6 +63,10 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
         textPaint.style = Paint.Style.FILL
         textPaint.textSize = 20f
 
+        elertPaint.color = Color.RED
+        elertPaint.style = Paint.Style.FILL
+        elertPaint.textSize = 25f
+
         boxPaint.color = ContextCompat.getColor(context!!, R.color.bounding_box_color)
         boxPaint.strokeWidth = 2F
         boxPaint.style = Paint.Style.STROKE
@@ -86,6 +92,10 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                 result.categories[0].label + " " +
                         String.format("%.2f", result.categories[0].score)
 
+            val elertText = "elert RLN detected!"
+
+            val thresholdText = "threshold " + String.format("%.2f", result.categories[0].score)
+
             // Draw rect behind display text
             textBackgroundPaint.getTextBounds(drawableText, 0, drawableText.length, bounds)
             val textWidth = bounds.width()
@@ -98,8 +108,16 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                 textBackgroundPaint
             )
 
+            //Log result
+            Log.d( "Result",result.categories[0].label + " " +
+                    String.format("%.2f", result.categories[0].score))
+
+
+
             // Draw text for detected object
             canvas.drawText(drawableText, left, top, textPaint)
+            canvas.drawText(elertText, 10f, 50f, elertPaint)
+            canvas.drawText(thresholdText, 10f, 90f, elertPaint)
         }
     }
 
