@@ -92,7 +92,7 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
                 result.categories[0].label + " " +
                         String.format("%.2f", result.categories[0].score)
 
-            val elertText = "elert RLN detected!"
+            val elertText = "Alert RLN detected!"
 
             val thresholdText = "threshold " + String.format("%.2f", result.categories[0].score)
 
